@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from nltk.sentiment import SentimentIntensityAnalyzer
 import numpy as np
 import nltk
+from vectorizer import *
 
 
 # Build function to extract features
@@ -15,21 +16,16 @@ def extract_features(corpus):
     """
     # 1. word count
     def word_count(sentence):
-        return len(sentence.split())
+        words = []
+        for word in sentence.split(' '):
+            words.append(word)
+        return len(words)
     word_count_feature = [word_count(x) for x in corpus]
 
     # 2. tf-idf weight
-    # Create a vectorizer to convert a collection of text documents to a matrix of token counts
-    vectorizer = CountVectorizer(analyzer="word",  # make sure features are made of word n-gram
-                                 preprocessor=None,
-                                 stop_words=None,
-                                 max_features=10,  # 6000 features that occur the most frequently across the corpus
-                                 ngram_range=(1, 2)  # extract unigram, bigram and trigram
-                                 )
 
     # Learn the vocabulary dictionary and return document-term matrix.
     count_feature = vectorizer.fit_transform(corpus)
-    # print(vectorizer.get_feature_names())
 
     # initialize a tfidf transformer to transform a count matrix to a normalized tf-idf representation
     tfidf_transformer = TfidfTransformer()
@@ -38,7 +34,7 @@ def extract_features(corpus):
     tfidf_feature = tfidf_transformer.fit_transform(count_feature)
     tfidf_feature = tfidf_feature.toarray()
 
-    # 3. polarity
+    # 3. positive or negative
     # use NLTK built-in pretrained sentiment analyzer VADER
     sia = SentimentIntensityAnalyzer()
 
@@ -49,7 +45,16 @@ def extract_features(corpus):
             return -1
     polarity_feature = [is_positive(x) for x in corpus]
 
-    # 4. count words start with 'un' and 'dis'
+    # 4. polarity score
+    # use NLTK built-in pretrained sentiment analyzer VADER
+    sia = SentimentIntensityAnalyzer()
+
+    def get_polarity_score(sentence):
+        return sia.polarity_scores(sentence)["compound"]
+
+    polarity_score_feature = [get_polarity_score(x) for x in corpus]
+
+    # 5. count words start with 'un' and 'dis'
     def find_prefix(sentence, prefix):
         counter = 0
         for word in sentence.split():
@@ -59,7 +64,7 @@ def extract_features(corpus):
     un_feature = [find_prefix(x, 'un') for x in corpus]
     dis_feature = [find_prefix(x, 'dis') for x in corpus]
 
-    # 5. find words related to different emotions in sentence
+    # 6. find words related to different emotions in sentence
     def find_key_words(sentence):
 
         synonyms_emotion = \
@@ -120,6 +125,7 @@ def extract_features(corpus):
 
     # concat different features
     all_features = np.concatenate((tfidf_feature, np.array([polarity_feature]).T), axis=1)
+    all_features = np.concatenate((all_features, np.array([polarity_score_feature]).T), axis=1)
     all_features = np.concatenate((all_features, np.array([word_count_feature]).T), axis=1)
     all_features = np.concatenate((all_features, np.array([un_feature]).T), axis=1)
     all_features = np.concatenate((all_features, np.array([dis_feature]).T), axis=1)
