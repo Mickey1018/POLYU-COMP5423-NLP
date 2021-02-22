@@ -1,11 +1,7 @@
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
-from nltk.sentiment import SentimentIntensityAnalyzer
 import numpy as np
+from nltk.sentiment import SentimentIntensityAnalyzer
+import pickle
 import nltk
-from vectorizer import *
-
 
 # Build function to extract features
 def extract_features(corpus):
@@ -23,16 +19,8 @@ def extract_features(corpus):
     word_count_feature = [word_count(x) for x in corpus]
 
     # 2. tf-idf weight
-
-    # Learn the vocabulary dictionary and return document-term matrix.
-    count_feature = vectorizer.fit_transform(corpus)
-
-    # initialize a tfidf transformer to transform a count matrix to a normalized tf-idf representation
-    tfidf_transformer = TfidfTransformer()
-
-    # use counts from count vectorizer results to compute tf-idf values
-    tfidf_feature = tfidf_transformer.fit_transform(count_feature)
-    tfidf_feature = tfidf_feature.toarray()
+    tfidf = pickle.load(open('trained_vectorizer.sav', 'rb'))
+    tfidf_feature = tfidf.transform(corpus).toarray()
 
     # 3. positive or negative
     # use NLTK built-in pretrained sentiment analyzer VADER
