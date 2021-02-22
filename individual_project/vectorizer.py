@@ -19,8 +19,8 @@ count_vectorizer = CountVectorizer(analyzer="word",  # make sure features are ma
 tfidf_vectorizer = TfidfVectorizer(analyzer="word",  # make sure features are made of word n-gram
                                    preprocessor=None,
                                    stop_words=None,
-                                   max_features=10,  # 10 features that occur the most frequently across the corpus
-                                   ngram_range=(1, 1)  # extract unigram
+                                   max_features=6000,  # 6000 features that occur the most frequently across the corpus
+                                   ngram_range=(1, 2)  # extract unigram, bigram
                                    )
 
 train_X, train_y, val_X, val_y, test_X = read_data()

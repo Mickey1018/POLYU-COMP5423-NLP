@@ -28,10 +28,10 @@ def train_model(classifier, feature_maps, training_label):
                             GaussianNB())
     elif classifier == 'random forest':
         clf = make_pipeline(StandardScaler(),
-                            RandomForestClassifier())
+                            RandomForestClassifier(class_weight="balanced_subsample"))
     elif classifier == 'mlp':
         clf = make_pipeline(StandardScaler(),
-                            MLPClassifier(random_state=1, max_iter=300))
+                            MLPClassifier(random_state=1, max_iter=300, hidden_layer_sizes=200))
     clf.fit(feature_maps, training_label)
     return clf
 

@@ -1,11 +1,16 @@
 from flask import Flask, render_template, request
-from emotion_classification import *
 from text_processor import *
 from feature_extraction import *
 from classification_model import *
 app = Flask(__name__)
 
-label_mapping = {-3: 'anger', -2: 'fear', 1: 'joy', 2: 'love', -1: 'sadness', 3: 'surprise'}
+label_mapping = {-3: {'emotion': 'anger', 'emoji': 128545},
+                 -2: {'emotion': 'fear', 'emoji': 128561},
+                 -1: {'emotion': 'sadness', 'emoji': 128546},
+                 1: {'emotion': 'joy', 'emoji': 128513},
+                 2: {'emotion': 'love', 'emoji': 128525},
+                 3: {'emotion': 'surprise', 'emoji': 128565}
+                 }
 
 
 @app.route('/')
@@ -21,7 +26,9 @@ def result():
       features_sentence = extract_features(processed_sentece)
       model = pickle.load(open('trained_model.sav', 'rb'))
       result = predict_emotion(model, features_sentence)[0]
-      return render_template("result.html", result=label_mapping[result])
+      return render_template("result.html",
+                             emotion=label_mapping[result]['emotion'],
+                             emoji=label_mapping[result]['emoji'])
 
 
 if __name__ == '__main__':
