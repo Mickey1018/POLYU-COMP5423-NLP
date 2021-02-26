@@ -54,6 +54,3 @@ def read_data():
     val_y = label2numeric(val_y)
 
     return train_X, train_y, val_X, val_y, test_X
-
-
-

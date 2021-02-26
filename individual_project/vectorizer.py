@@ -23,11 +23,12 @@ tfidf_vectorizer = TfidfVectorizer(analyzer="word",  # make sure features are ma
                                    ngram_range=(1, 2)  # extract unigram, bigram
                                    )
 
+# train TFIDF vectorizer
 train_X, train_y, val_X, val_y, test_X = read_data()
 processed_train_X = text_processing(train_X)
 tfidf_vectorizer.fit_transform(processed_train_X)
 
-# save the trained vectorizer
+# save the trained vectorizer into disk
 if os.path.exists('trained_vectorizer.sav'):
     os.remove('trained_vectorizer.sav')
 pickle.dump(tfidf_vectorizer, open('trained_vectorizer.sav', 'wb'))

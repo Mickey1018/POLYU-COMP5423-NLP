@@ -23,7 +23,7 @@ def main():
     features_test = extract_features(processed_test_X)
 
     # Train a machine learning model 'MLP' with training data set
-    model = train_model(classifier='mlp',
+    model = train_model(classifier='random forest',
                         feature_maps=features_train,
                         training_label=train_y)
 

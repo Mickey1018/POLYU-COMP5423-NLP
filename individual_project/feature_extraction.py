@@ -3,6 +3,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 import pickle
 import nltk
 
+
 # Build function to extract features
 def extract_features(corpus):
     """
@@ -42,7 +43,7 @@ def extract_features(corpus):
 
     polarity_score_feature = [get_polarity_score(x) for x in corpus]
 
-    # 5. count words start with 'un' and 'dis'
+    # 5,6. count words start with 'un' and 'dis'
     def find_prefix(sentence, prefix):
         counter = 0
         for word in sentence.split():
@@ -52,7 +53,7 @@ def extract_features(corpus):
     un_feature = [find_prefix(x, 'un') for x in corpus]
     dis_feature = [find_prefix(x, 'dis') for x in corpus]
 
-    # 6. find words related to different emotions in sentence
+    # 7. find words related to different emotions in sentence
     def find_key_words(sentence):
 
         synonyms_emotion = \
