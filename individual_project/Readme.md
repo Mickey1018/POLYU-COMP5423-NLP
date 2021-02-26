@@ -18,5 +18,12 @@ Structure of program:
  - **classification_model.py**            ---------a python file to build machine learning model, and contains function for evaluation and prediction on future data 
  - **trained_vectorizer.sav**             ---------a sav file to store trained vectorizer
  - **trained_model.sav**                  ---------a sav file to store trained model
- - **emotion_classification.py**          ---------a **main** python file to run text data in pipline (i.e. read all text data-->text processing-->feature extraction-->machine learning model training-->evaluation on validation data set-->prediction on test data set-->write predicted results)
+ - **emotion_classification.py**          ---------a **main** python file to run text data in pipline 
+                                                   (i.e. 1. read all text data
+                                                         2. text processing
+                                                         3. feature extraction
+                                                         4. machine learning model training
+                                                         5. evaluation on validation data set
+                                                         6. prediction on test data set
+                                                         7. write predicted results)
 
