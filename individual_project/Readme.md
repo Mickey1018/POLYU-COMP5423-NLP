@@ -2,10 +2,10 @@
  
 Structure of program:
  - /data
-   - train.txt
-   - val.txt
-   - test_data.txt
-   - test_prediction.txt
+   - train.txt                                     a text file contains training data w/ label
+   - val.txt                                       a text file contains validation data w/ label
+   - test_data.txt                                 a text file contains test data w/o label
+   - test_prediction.txt                           a text file contains predicted results on test data
  - /templates
    - predict.html
    - result.html
