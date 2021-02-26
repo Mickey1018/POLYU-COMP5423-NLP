@@ -2,9 +2,9 @@
  
 Structure of program:
  - **/data**
-   - **train.txt**                        ---------a text file contains training data w/ label
-   - **val.txt**                          ---------a text file contains validation data w/ label
-   - **test_data.txt**                    ---------a text file contains test data w/o label
+   - **train.txt**                        ---------a text file contains training data set w/ label
+   - **val.txt**                          ---------a text file contains validation data set w/ label
+   - **test_data.txt**                    ---------a text file contains test data set w/o label
    - **test_prediction.txt**              ---------a text file contains predicted results on test data
  - **/templates**
    - **predict.html**                     ---------a html file to prompt and retreive input sentence from user, running at the endpoint localhost:5000/     
@@ -18,5 +18,5 @@ Structure of program:
  - **classification_model.py**            ---------a python file to build machine learning model, and contains function for evaluation and prediction on future data 
  - **trained_vectorizer.sav**             ---------a sav file to store trained vectorizer
  - **trained_model.sav**                  ---------a sav file to store trained model
- - **emotion_classification.py**          ---------a **main** python file to run text data in the pipline 
+ - **emotion_classification.py**          ---------a **main** python file to run text data in pipline (i.e. read all text data-->text processing-->feature extraction-->machine learning model training-->evaluation on validation data set-->prediction on test data set-->write predicted results)
 
