@@ -1,4 +1,5 @@
- A readme file describes the structure of your program and how to run it.
+** COMP5423 NATURAL LANGUAGE PROCESSING**
+**Lab1 Homework: Emotion Classification**
  
 Structure of program:
  - **/data**
@@ -27,3 +28,4 @@ Structure of program:
    - 6. prediction on test data set
    - 7. write predicted results
 
+How to run:
