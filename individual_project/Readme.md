@@ -2,6 +2,7 @@
 
 **Lab1 Homework: Emotion Classification**
  
+ 
 Structure of program:
  - **/data**
    - **train.txt**                        ---------a text file contains training data set w/ label
@@ -29,4 +30,11 @@ Structure of program:
    - 6. prediction on test data set
    - 7. write predicted results
 
+
+
 How to run:
+
+- 1. launch application.py in terminal
+- 2. open web brower and visit localhost:5000/
+- 3. input an English sentence and click submit button
+- 4. results of emotion to that sentence as well as a corresponding emoji will be returned
