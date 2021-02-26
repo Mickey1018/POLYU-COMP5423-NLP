@@ -25,5 +25,5 @@ Structure of program:
 - 4. machine learning model training
 - 5. evaluation on validation data set
 - 6. prediction on test data set
-- 7. write predicted results)
+- 7. write predicted results
 
