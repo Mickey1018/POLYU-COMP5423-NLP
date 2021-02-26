@@ -6,7 +6,7 @@ Structure of program:
    - **val.txt**                                       ---------a text file contains validation data w/ label
    - **test_data.txt**                                 ---------a text file contains test data w/o label
    - **test_prediction.txt**                           ---------a text file contains predicted results on test data
- - /templates
+ - **/templates**
    - **predict.html**
    - **result.html**
  - **application.py**
