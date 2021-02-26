@@ -9,7 +9,7 @@ Structure of program:
  - **/templates**
    - **predict.html**                      ---------a html file to prompt and retreive input sentence from user, running at the endpoint localhost:5000/     
    - **result.html**                       ---------a html file to return the predicted result with corresponding emoji, running at endpoint localhost:5000/result 
- - **application.py**                      ---------a
+ - **application.py**                      ---------a python file for web application, launched by typing 'python application.py' in the terminal
  - **read.py**                             ---------a
  - **write.py**                            ---------a
  - **text_processor.py**                   ---------a
