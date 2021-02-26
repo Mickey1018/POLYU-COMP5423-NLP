@@ -10,9 +10,9 @@ Structure of program:
    - **predict.html**                      ---------a html file to prompt and retreive input sentence from user, running at the endpoint localhost:5000/     
    - **result.html**                       ---------a html file to return the predicted result with corresponding emoji, running at endpoint localhost:5000/result 
  - **application.py**                      ---------a python file for web application, launched by typing 'python application.py' in the terminal
- - **read.py**                             ---------a
- - **write.py**                            ---------a
- - **text_processor.py**                   ---------a
+ - **read.py**                             ---------a python file contians function to read and retrieve training data, validation data, and test data
+ - **write.py**                            ---------a python file contains function to write the predicted results on test data
+ - **text_processor.py**                   ---------a 
  - **vectorizer.py**                       ---------a
  - **feature_extraction.py**               ---------a
  - **classification_model.py**             ---------a
