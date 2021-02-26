@@ -1,7 +1,7 @@
  A readme file describes the structure of your program and how to run it.
  
-**Structure of program:
- - /data
+Structure of program:
+ - **/data**
    - train.txt                                     ---------a text file contains training data w/ label
    - val.txt                                       ---------a text file contains validation data w/ label
    - test_data.txt                                 ---------a text file contains test data w/o label
@@ -19,4 +19,4 @@
  - emotion_classification.py
  - trained_vectorizer.sav
  - trained_model.sav
-**
+
